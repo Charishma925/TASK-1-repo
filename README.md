@@ -1,18 +1,41 @@
-# TASK-1-repo
-DATA CLEANING AND PREPROCESSING
-Dataset used: Life Expectancy(WHO)
-Description of dataset:The Global Health Observatory (GHO) data repository under World Health Organization (WHO) keeps track of the health status as well as many other related factors for all countries.
-The datasets are made available to public for the purpose of health data analysis. The dataset related to life expectancy, health factors for 193 countries has been collected from the same
-WHO data repository website and its corresponding economic data was collected from United Nation website.
-The individual data files have been merged together into a single dataset. On initial visual inspection of the data showed some missing values. 
-As the datasets were from WHO, we found no evident errors.
-Missing data was handled in R software by using Missmap command. The result indicated that most of the missing data was for population, Hepatitis B and GDP.
-The missing data were from less known countries like Vanuatu, Tonga, Togo,Cabo Verde etc.
-Finding all data for these countries was difficult and hence, it was decided that we exclude these countries from the final model dataset. The final merged file(final dataset) consists of 22 Columns and 2938 rows which meant 20 predicting variables. 
-All predicting variables was then divided into several broad categories:​Immunization related factors, Mortality factors, Economical factors and Social factors.
-STEPS FOLLOWED TO CLEAN AND PREPROCESS THE DATASET
-1.Import the LIFE EXPECTANCY dataset and explore basic info (nulls, data types).
-2.Handle missing values using mean/median/imputation.
-3.Convert categorical features into numerical using encoding.
-4.Normalize/standardize the numerical features.
-5.Visualize outliers using boxplots and remove them.
+# Life Expectancy Data Cleaning and Preprocessing
+
+This project demonstrates a step-by-step data cleaning and preprocessing pipeline using the **Life Expectancy** dataset from Kaggle. The goal is to prepare the raw data for machine learning tasks by handling missing values, encoding categorical variables, normalizing numerical features, and removing outliers.
+
+## Dataset
+
+- **Source**: Kaggle - Life Expectancy (WHO)
+- **File**: `Life Expectancy Data.csv`
+
+## Tools Used
+
+- Python
+- Pandas
+- NumPy
+- Seaborn
+- Matplotlib
+- Scikit-learn
+
+## Preprocessing Steps
+
+### 1. Import the Dataset and Explore Basic Info
+- Load the CSV into a Pandas DataFrame.
+- Use `.info()`, `.head()`, and `.isnull().sum()` to inspect structure and missing data.
+
+### 2. Handle Missing Values
+- Numerical columns: Filled using the **median** to reduce outlier impact.
+- Categorical columns: Filled using the **mode** (most frequent category).
+
+#### 3. Encode Categorical Features
+One-hot encoding using pd.get_dummies() with drop_first=True to avoid multicollinearity.
+
+##### 4. Normalize/Standardize Numerical Features
+Standardization using StandardScaler() from sklearn.preprocessing to bring features to a mean of 0 and standard deviation of 1.
+
+##### 5. Visualize and Remove Outliers
+- Boxplots were used to detect outliers.
+- Outliers removed using the Interquartile Range (IQR) method.
+
+#### 6.Final Output
+- A cleaned and preprocessed dataset ready for machine learning model training.
+- Shape of the final dataset and data quality significantly improved.
